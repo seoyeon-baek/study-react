@@ -1,10 +1,2 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
-ReactDOM.render(
-  <div>
-    <h1>title</h1>
-    <p>paragraph</p>
-  </div>,
-  document.getElementById("root")
-);
+// import "./jsxStudy/jsx-study1.js";
+import "./jsxStudy/jsx-study2.js";
