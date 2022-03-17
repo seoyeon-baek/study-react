@@ -25,13 +25,11 @@ const Dog = function () {
 //화살표함수로 컴포넌트 정의 가능
 const Pig = () => <div>🐷</div>;
 
-function AnimalContainer() {
-  return (
-    <div style={{fontSize: "100px"}}>
-      <Cat />
-      <Dog />
-      <Pig />
-    </div>
-  );
-}
-ReactDOM.render(<AnimalContainer />, document.getElementById("root"));
+ReactDOM.render(
+  <React.Fragment>
+    <Cat />
+    <Dog />
+    <Pig />
+  </React.Fragment>,
+  document.getElementById("root")
+);
