@@ -12,7 +12,7 @@ import ReactDOM from "react-dom";
 // const [v3] = arr; //100출력하고 200은 버린다.
 
 // //객체 비구조화 할당
-const user = {name: "John", age: 20};
+// const user = {name: "John", age: 20};
 // // const {name, age} = user;
 
 // // const name = user.name;
@@ -21,36 +21,36 @@ const user = {name: "John", age: 20};
 // // const name = "Hello";
 // const {name: n, age} = user;
 
-const name = "Hello";
-const {name: n, age} = user;
+// const name = "Hello";
+// const {name: n, age} = user;
 
-function f({name: n, age}) {
-  console.log(n, age);
-}
+// function f({name: n, age}) {
+//   console.log(n, age);
+// }
 
-function f2(user) {
-  const name = user.name;
-  const age = user.age;
-  console.log(name, age);
-}
+// function f2(user) {
+//   const name = user.name;
+//   const age = user.age;
+//   console.log(name, age);
+// }
 
-const ComponetWithMultipleProps = function (props) {
-  console.log(props);
-  const {value1, value2, whatever} = props;
-  const propsObj = {
-    value1: 2,
-    value2: "javaScript",
-    whatever: 2.345,
-  };
+// const ComponetWithMultipleProps = function (props) {
+//   console.log(props);
+//   const {value1, value2, whatever} = props;
+//   const propsObj = {
+//     value1: 2,
+//     value2: "javaScript",
+//     whatever: 2.345,
+//   };
 
-  return (
-    <p>
-      {propsObj.value1}
-      {propsObj.value2}
-      {propsObj.whatever}
-    </p>
-  );
-};
+//   return (
+//     <p>
+//       {propsObj.value1}
+//       {propsObj.value2}
+//       {propsObj.whatever}
+//     </p>
+//   );
+// };
 
 // const ComponentWithProps = function (props) {
 //   props.value.a = 2;
@@ -67,30 +67,31 @@ const ComponetWithMultipleProps = function (props) {
 //   );
 // };
 
-const Greeting = props => {
-  return (
-    <div>
-      <h1>Hello, {props.name}</h1>
-    </div>
-  );
-};
+// const Greeting = props => {
+//   return (
+//     <div>
+//       <h1>Hello, {props.name}</h1>
+//     </div>
+//   );
+// };
 
-const Sum = props => {
-  return (
-    <div>
-      <h1>
-        x: {props.x} <br /> y: {props.y}
-      </h1>
-    </div>
-  );
-};
+// const Sum = props => {
+//   return (
+//     <div>
+//       <h1>
+//         x: {props.x} <br /> y: {props.y}
+//       </h1>
+//     </div>
+//   );
+// };
 
-const PersonProfile = function ({name, age, gender, profile, highlight}) {
+const PersonProfile = function (props) {
+  const {name, age, gender, profile} = props.person;
   return (
     // hightlight는 undefined이고 true면 빨강 false면 Null 추출
     <div
       className="person"
-      style={highlight ? {color: "red", backgroundColor: "yellow"} : null}
+      style={props.highlight ? {color: "red", backgroundColor: "yellow"} : null}
     >
       <h1>Profile</h1>
       <img src={profile} />
@@ -100,13 +101,15 @@ const PersonProfile = function ({name, age, gender, profile, highlight}) {
     </div>
   );
 };
-
 const anotherPerson = {
   name: "Jane",
   age: 28,
   gender: "female",
   profile: "https://randomuser.me/api/portraits/women/75.jpg",
 };
+
+const {name: n2, gender, ...rest} = anotherPerson;
+console.log(rest);
 
 ReactDOM.render(
   // <Greeting name="김미림" />,
@@ -115,12 +118,15 @@ ReactDOM.render(
   //   <ComponentWithProps value={() => {}} />,
   <div>
     <PersonProfile
-      name="John"
-      age={35}
-      gender="male"
-      profile="https://randomuser.me/api/portraits/men/75.jpg"
+      //     name="John"
+      //     age={35}
+      //     gender="male"
+      //     profile="https://randomuser.me/api/portraits/men/75.jpg"
+      //   />
+      //   <PersonProfile {...anotherPerson} highlight />
+      //   <PersonProfile name="ken" gender="male" age={32} {...rest} />
+      person={anotherPerson}
     />
-    <PersonProfile {...anotherPerson} highlight />
   </div>,
   document.getElementById("root")
 );
