@@ -5,4 +5,5 @@
 // import "./component-basic/props-basic";
 // import "./component-basic/props-more";
 // import "./component-basic/props-children";
-import "./component-basic/SlotMachine";
+// import "./component-basic/SlotMachine";
+import "./component-intermediate/study-state";
