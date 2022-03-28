@@ -9,7 +9,8 @@ function Counter(props) {
   return (
     <div>
       <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>증가</button>
+      <button onClick={() => setCount(prev => prev + 1)}>증가</button>
+      <button onClick={() => setCount(count - 1)}>감소</button>
       <h1>{text}</h1>
       <button
         onClick={function () {

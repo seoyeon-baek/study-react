@@ -6,4 +6,5 @@
 // import "./component-basic/props-more";
 // import "./component-basic/props-children";
 // import "./component-basic/SlotMachine";
-import "./component-intermediate/study-state";
+// import "./component-intermediate/study-state";
+import "./component-intermediate/counter-demo";

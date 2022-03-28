@@ -1,0 +1,52 @@
+<script>
+  let lst = [
+    {id: 1, name: "John"},
+    {id: 2, name: "Jane"},
+    {id: 3, name: "Paul"},
+  ];
+
+  //   let.push({id: 4, name: "Ken"}); 리액트에서는 이렇게 원본을 직접 변경하면 안된다
+  let newLst = lst.concat({id: 4, name: "Ken"}); //새로운 배열으로 간주됨
+  //   console.log("concat =====");
+  //   console.log(lst); // 원본에 영향 주지 않음
+  //   console.log(newLst); // 새로운 리스트 객체가 생성됨
+  //   console.log(lst === newLst); // 서로 다른 객체이므로 false를 반환
+
+  //===========
+  //map
+  let arr = [1, 2, 3];
+  let r = arr.map(v => {
+    return v * 2;
+  });
+  console.log(r); //[2,4,6]
+
+  let arr2 = [1, 2, 3, 4];
+  r = arr.map(v => {
+    return v % 2 === 0;
+  });
+
+  //===========
+  let updatedId = 2;
+  let updatedName = "Smith";
+  //   lst[1].name = "Smith";
+
+  let updatedLst = lst.map(item => {
+    if (item.id === updatedId) {
+      item.name = updatedName;
+      item = {...item, name: updatedName};
+    }
+  });
+
+  //==========
+  //filter
+  let arr3 = [1, 2, 3, 4];
+  let x = arr2.filter(item => {
+    return x % 2 === 0;
+  });
+
+  //===========
+  let removedId = 1;
+  let removedLst = lst.filter(item => {
+    return item.id !== removedId;
+  });
+</script>
