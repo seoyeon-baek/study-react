@@ -7,4 +7,6 @@
 // import "./component-basic/props-children";
 // import "./component-basic/SlotMachine";
 // import "./component-intermediate/study-state";
-import "./component-intermediate/counter-demo";
+// import "./component-intermediate/counter-demo";
+// import "./component-intermediate/manipulate-list";
+import "./component-intermediate/todo-app-demo";
