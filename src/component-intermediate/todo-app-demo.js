@@ -1,7 +1,12 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 
-const TodoList = function ({todos, handleTodoStatusToggle, handleTodoRemove}) {
+const TodoList = function ({
+  todos,
+  handleTodoStatusToggle,
+  handleTodoRemove,
+  handleTodoPriority,
+}) {
   return (
     <ol>
       {todos.map((todo, idx) => {
@@ -12,6 +17,7 @@ const TodoList = function ({todos, handleTodoStatusToggle, handleTodoRemove}) {
               todo={todo}
               handleTodoStatusToggle={handleTodoStatusToggle}
               handleTodoRemove={handleTodoRemove}
+              handleTodoPriority={handleTodoPriority}
             />
           </li>
         );
@@ -21,29 +27,28 @@ const TodoList = function ({todos, handleTodoStatusToggle, handleTodoRemove}) {
 };
 
 const TodoItem = function ({
-  todo: {completed, text},
+  todo: {completed, text, priority},
   idx,
   handleTodoStatusToggle,
   handleTodoRemove,
+  handleTodoPriority,
 }) {
-  const [count, setCount] = useState(0);
-  const style = (count, completed) => {};
+  const style = {};
+  if (completed) style.textDecoration = "line-through";
+  if (priority >= 5) style.fontWeight = "bold";
   return (
     <div>
-      <span
-        style={completed ? {textDecoration: "line-through"} : null}
-        onClick={() => handleTodoStatusToggle(idx)}
-      >
-        {text}
-        {/* {important} */}
+      <span style={style} onClick={() => handleTodoStatusToggle(idx)}>
+        {text} (중요도: {priority})
       </span>
-      &nbsp;
-      <span>(중요도: {count})</span>
-      &nbsp;
-      <button onClick={() => setCount(count + 1)}>증가</button>
-      &nbsp;
-      <button onClick={() => setCount(count > 0 ? count - 1 : 0)}>감소</button>
-      &nbsp;
+      <button onClick={() => handleTodoPriority(idx, priority + 1)}>
+        증가
+      </button>
+      <button
+        onClick={() => handleTodoPriority(idx, priority > 0 ? priority - 1 : 0)}
+      >
+        감소
+      </button>
       <button onClick={() => handleTodoRemove(idx)}>삭제</button>
       <hr />
     </div>
@@ -61,7 +66,7 @@ const TodoAdder = function ({handleTodoAdd}) {
       <input type="text" onChange={handleChange} value={input} />
       <button
         onClick={() => {
-          handleTodoAdd({completed: false, text: input}); //완료가안된todo를 생성해야하니 false값으로 주고 text는 input값에서 받아옴
+          handleTodoAdd({completed: false, text: input, priority: 0}); //완료가안된todo를 생성해야하니 false값으로 주고 text는 input값에서 받아옴
           setInput("");
         }}
       >
@@ -73,8 +78,8 @@ const TodoAdder = function ({handleTodoAdd}) {
 
 const TodoApp = function (props) {
   const [todos, setTodos] = useState([
-    {completed: false, text: "리액트 공부하기"},
-    {completed: true, text: "ES6 문법 공부하기"},
+    {completed: false, text: "리액트 공부하기", priority: 3},
+    {completed: true, text: "ES6 문법 공부하기", priority: 0},
   ]);
 
   const handleTodoAdd = newTodo => setTodos(todos => todos.concat(newTodo));
@@ -91,6 +96,21 @@ const TodoApp = function (props) {
       });
     });
   };
+
+  const handleTodoPriority = (todoIndex, newPriority) => {
+    setTodos(todos => {
+      return todos.map((todo, idx) => {
+        if (idx === todoIndex) {
+          return {
+            ...todo,
+            priority: newPriority,
+          };
+        }
+        return todo;
+      });
+    });
+  };
+
   const handleTodoRemove = todoIndex => {
     setTodos(todos => {
       return todos.filter((_, idx) => {
@@ -106,6 +126,7 @@ const TodoApp = function (props) {
         todos={todos}
         handleTodoStatusToggle={handleTodoStatusToggle}
         handleTodoRemove={handleTodoRemove}
+        handleTodoPriority={handleTodoPriority}
       />
 
       {/* 할일추가 컴포넌트 */}
