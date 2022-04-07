@@ -9,4 +9,5 @@
 // import "./component-intermediate/study-state";
 // import "./component-intermediate/counter-demo";
 // import "./component-intermediate/manipulate-list";
-import "./component-intermediate/todo-app-demo";
+// import "./component-intermediate/todo-app-demo";
+import "./use-effect-demo/use-effect-intro";
