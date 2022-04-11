@@ -10,4 +10,10 @@
 // import "./component-intermediate/counter-demo";
 // import "./component-intermediate/manipulate-list";
 // import "./component-intermediate/todo-app-demo";
-import "./use-effect-demo/use-effect-intro";
+// import "./use-effect-demo/use-effect-intro";
+// import "./use-effect-demo/use-effect-deps";
+// import "./use-effect-demo/use-effect-using-local-storage";
+// import "./use-effect-demo/use-effect-unmount";
+// import "./use-effect-demo/use-effect-unmount-deps";
+// import "./use-effect-demo/use-effect-with-dom";
+import "./component-intermediate/timer-demo";
