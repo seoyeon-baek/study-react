@@ -15,9 +15,9 @@ const Timer = function (props) {
         if (prevState.time === 1) {
           console.log("clearInterval (by timeout)");
           clearInterval(id);
-          return {timeout: true, time: prevState.time - 1};
+          return {...prevState, timeout: true, time: prevState.time - 1};
         } else {
-          return {time: prevState.time - 1};
+          return {...prevState, time: prevState.time - 1};
         }
       });
     }, 1000);
