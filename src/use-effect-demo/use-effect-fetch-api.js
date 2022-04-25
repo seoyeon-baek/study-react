@@ -1,6 +1,22 @@
 import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 
+const Search = props => {
+  const [search, setSearch] = useState("");
+  const handleChange = e => setSearch(e.target.value);
+
+  return (
+    <div>
+      <input type="text" onChange={handleChange} onClick={search} />
+      <input
+        type="button"
+        value="검색"
+        onClick={() => props.onSearch(search)}
+      />
+    </div>
+  );
+};
+
 const RepoItem = props => {
   const {
     name,
@@ -25,25 +41,36 @@ const RepoItem = props => {
   );
 };
 
-function RepoSearchApp() {
+function RepoSearchApp(props) {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const userName = "seoyeon-baek";
+  const [userName, setUserName] = useState(null);
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${userName}/repos`, {
-      headers: {Authorization: "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"},
-    })
-      .then(res => res.json())
-      .then(data => {
-        // 데이터 설정 및 로딩 상태 갱신
-        setRepos(data);
-        setLoading(false);
-      });
-  }, []);
+    if (userName !== null) {
+      fetch(`https://api.github.com/users/${userName}/repos`, {
+        headers: {Authorization: "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"},
+      })
+        .then(res => res.json())
+        .then(data => {
+          // 데이터 설정 및 로딩 상태 갱신
+          setRepos(data);
+          setLoading(false);
+        });
+    }
+  }, [userName]);
+
+  if (userName === null)
+    return (
+      <div>
+        <Search onSearch={setUserName} />
+        <h1>유저 아이디를 입력해주세요.</h1>
+      </div>
+    );
 
   return (
     <div>
+      <Search onSearch={setUserName} />
       {repos.length === 0 ? (
         loading ? (
           <h1>저장소를 불러오는 중입니다.</h1>

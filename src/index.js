@@ -19,3 +19,4 @@
 // import "./component-intermediate/timer-demo";
 // import "./component-intermediate/click-game";
 import "./use-effect-demo/use-effect-fetch-api";
+// import "./use-effect-demo/search-component";
