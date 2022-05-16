@@ -22,6 +22,7 @@ const Search = () => {
 const App = props => {
   const [userName, setUserName] = useState(null);
 
+
   useEffect(() => {
     if (userName !== null) {
       alert(userName);

@@ -5,6 +5,8 @@ const Search = props => {
   const [search, setSearch] = useState("");
   const handleChange = e => setSearch(e.target.value);
 
+  
+
   return (
     <div>
       <input type="text" onChange={handleChange} onClick={search} />
@@ -44,11 +46,11 @@ const RepoItem = props => {
 function RepoSearchApp(props) {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [userName, setUserName] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (userName !== null) {
-      fetch(`https://api.github.com/users/${userName}/repos`, {
+    if (user !== null) {
+      fetch(`https://api.github.com/users/${user}/repos`, {
         headers: {Authorization: "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"},
       })
         .then(res => res.json())
@@ -58,19 +60,19 @@ function RepoSearchApp(props) {
           setLoading(false);
         });
     }
-  }, [userName]);
+  }, [user]);
 
-  if (userName === null)
+  if (user === null)
     return (
       <div>
-        <Search onSearch={setUserName} />
+        <Search onSearch={setUser} />
         <h1>유저 아이디를 입력해주세요.</h1>
       </div>
     );
 
   return (
     <div>
-      <Search onSearch={setUserName} />
+      <Search onSearch={setUser} />
       {repos.length === 0 ? (
         loading ? (
           <h1>저장소를 불러오는 중입니다.</h1>
