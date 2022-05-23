@@ -18,5 +18,7 @@
 // import "./use-effect-demo/use-effect-with-dom";
 // import "./component-intermediate/timer-demo";
 // import "./component-intermediate/click-game";
-import "./use-effect-demo/use-effect-fetch-api";
+// import "./use-effect-demo/use-effect-fetch-api";
 // import "./use-effect-demo/search-component";
+// import "./3407_백서연";
+import "./component-advanced/ref-demo";
