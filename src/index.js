@@ -21,4 +21,11 @@
 // import "./use-effect-demo/use-effect-fetch-api";
 // import "./use-effect-demo/search-component";
 // import "./3407_백서연";
-import "./component-advanced/ref-demo";
+// import "./component-advanced/ref-demo";
+// import "./component-advanced/controlled-component";
+// import "./component-advanced/reservation-form";
+// import "./component-advanced/uncontrolled-component";
+// import "./component-advanced/use-ref-practice-form";
+// import "./component-advanced/fake-login-demo";
+// import "./component-styling/using-css";
+import "./component-styling/using-css-module";
