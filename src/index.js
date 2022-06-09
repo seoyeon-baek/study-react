@@ -28,4 +28,7 @@
 // import "./component-advanced/use-ref-practice-form";
 // import "./component-advanced/fake-login-demo";
 // import "./component-styling/using-css";
-import "./component-styling/using-css-module";
+// import "./component-styling/using-css-module";
+// import "./component-styling/using-scss";
+// import "./component-styling/using-styled-components"
+import "./component-styling/using-svg";
